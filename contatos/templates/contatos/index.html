@@ -32,17 +32,30 @@
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
+    {% if contatos.has_previous %}
+      <li class="page-item active">
+          <a class='page-link' href="?p={{ contatos.previous_page_number }}&termo={{ request.GET.termo }}">anterior</a>
+      </li>
+    {% endif %}
+
     {% for pagina in contatos.paginator.page_range %}
       {% if contatos.number == pagina %}
         <li class="page-item active">
-          <a class="page-link" href="?p={{ pagina }}">{{ pagina }}</a>
+          <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
         </li>
       {% else %}
         <li class="page-item">
-          <a class="page-link" href="?p={{ pagina }}">{{ pagina }}</a>
+          <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
         </li>
       {% endif %}
     {% endfor %}
+
+    {% if contatos.has_next %}
+      <li class='page-item active'>
+        <a class='page-link' href="?p={{ contatos.next_page_number }}&termo={{ request.GET.termo }}">próxima</a>
+      </li>
+    {% endif %}
+
   </ul>
 </nav>
 {% endblock 'conteudo' %}
