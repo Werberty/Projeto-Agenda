@@ -17,7 +17,7 @@
     <div class="row">
       <div class="col-lg-12">
         
-        <br><br>
+        {% comment %} <br><br>
         <form method="get" action="{% url 'busca' %}">
           <div class="form-group row">
             <div class="col-12">
@@ -26,9 +26,12 @@
                      id="search-input"
                      placeholder="Digite sua pesquisa"
                      name="termo">
+
+              {% include 'parciais/_messages.html' %}
+
             </div>
           </div>
-        </form>
+        </form> {% endcomment %}
 
         {% block 'conteudo' %}{% endblock 'conteudo' %}
 
