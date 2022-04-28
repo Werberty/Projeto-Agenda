@@ -27,6 +27,7 @@ def logout(request):
     auth.logout(request)
     return redirect('login')
 
+
 def cadastro(request):
     if request.method != 'POST':
         return render(request, 'accounts/cadastro.html')
