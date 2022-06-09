@@ -5,7 +5,7 @@
 {% block 'conteudo' %}
 <h1 class='mt-3 mb-3'>Login</h1>
 
-{% comment %} {% if not 'user.is_authenticated' %} {% endcomment %}
+{% if not user.is_authenticated %}
   <form method='POST' action="{% url 'login' %}">
       {% include 'parciais/_messages.html' %}
       {% csrf_token %}
@@ -20,10 +20,10 @@
       <a class="btn btn-primary" href="{% url 'cadastro' %}">Cadastrar-se</a>
       <button type="submit" class="btn btn-primary">Entrar</button>
   </form>
-{% comment %} {% else %}
+{% else %}
   <p>
       Você fez login com {{user}},
       <a href="{% url 'logout' %}">clique aqui</a> para sair.
   </p>
-{% endif %} {% endcomment %}
+{% endif %}
 {% endblock 'conteudo' %}
