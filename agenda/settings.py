@@ -10,11 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-import os
-from distutils.log import INFO
-from logging import WARNING
 from pathlib import Path
-from sre_constants import SUCCESS
 
 import django_on_heroku
 from django.contrib.messages import constants
