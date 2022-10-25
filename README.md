@@ -2,7 +2,7 @@
 <h1 align="center">
     📔 <a href="https://projeto-agenda-werberty.herokuapp.com/" target="_blank">Projeto Agenda</a>
 </h1>
-<p align="center">📒 Site de agenda de contatos</p>
+<p align="center">📒 Site agenda de contatos</p>
 
 <p align="center">
  <a href="#objetivo">Objetivo</a> •
