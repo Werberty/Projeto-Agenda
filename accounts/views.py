@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.validators import validate_email
 from django.shortcuts import redirect, render
+from django.core.exceptions import ValidationError
 
 from .models import FormContato
 
@@ -48,18 +49,20 @@ def cadastro(request):
 
     try:
         validate_email(email)
-    except:
+    except ValidationError:
         messages.error(request, 'Email inváido.', 'alert-danger')
         return render(request, 'accounts/cadastro.html')
 
     if len(senha) < 6:
         messages.error(
-            request, 'Senha precisa ser maior que 6 caracteres.', 'alert-danger')
+            request, 'Senha precisa ser maior que 6 caracteres.', 
+            'alert-danger')
         return render(request, 'accounts/cadastro.html')
 
     if len(usuario) < 6:
         messages.error(
-            request, 'Usuário precisa ser maior que 6 caracteres.', 'alert-danger')
+            request, 'Usuário precisa ser maior que 6 caracteres.', 
+            'alert-danger')
         return render(request, 'accounts/cadastro.html')
 
     if senha != senha2:
@@ -104,10 +107,13 @@ def dashboard(request):
 
     if len(descricao) < 5:
         messages.error(
-            request, 'Descrição precisa term mais que 5 caracteres.', 'alert-danger')
+            request, 'Descrição precisa term mais que 5 caracteres.', 
+            'alert-danger')
         form = FormContato(request.POST)
         return render(request, 'accounts/dashboard.html', {'form': form})
 
     form.save()
-    messages.success(request, f'Contato {request.POST.get("nome")} salvo com sucesso.', 'alert-success')
+    messages.success(request, 
+                     f'Contato {request.POST.get("nome")}\ salvo com sucesso.', 
+                     'alert-success')
     return redirect('dashboard')
